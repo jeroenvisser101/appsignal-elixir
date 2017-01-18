@@ -46,7 +46,7 @@ defmodule Appsignal.Mixfile do
   end
 
   defp compilers(:test_phoenix), do: [:phoenix] ++ compilers(:prod)
-  defp compilers(_), do: [:appsignal] ++ Mix.compilers
+  defp compilers(_), do: [:phoenix, :appsignal] ++ Mix.compilers
 
   defp test_paths(:test_phoenix), do: ["test/appsignal", "test/phoenix"]
   defp test_paths(_), do: ["test/appsignal"]
@@ -55,7 +55,7 @@ defmodule Appsignal.Mixfile do
     [
       {:poison, "~> 2.1"},
       {:decorator, "~> 1.0"},
-      {:phoenix, "~> 1.2.0", optional: true, only: :test_phoenix},
+      {:phoenix, "~> 1.2.0", optional: true},
       {:mock, "~> 0.1.1", only: [:test, :test_phoenix]},
       {:ex_doc, "~> 0.12", only: :dev}
     ]
